@@ -1,15 +1,20 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const hbs = require('hbs');
 
 const publicFolderPath = path.join(__dirname, '../public');
-const templateFolderPath = path.join(__dirname, '../templates');
+const templateFolderPath = path.join(__dirname, '../templates/views');
+const partialFolderPath = path.join(__dirname, '../templates/partials');
 
 //set view engine as hbs
 app.set("view engine", "hbs");
 
 //change views folder name to another name
 app.set("views", templateFolderPath);
+
+//registered partials.
+hbs.registerPartials(partialFolderPath);
 
 //for static pages
 app.use(express.static(publicFolderPath));
