@@ -40,6 +40,18 @@ app.get('/about', (req, res) => {
     res.send();
 });
 
+app.get('/about/*', (req, res) => {
+    res.render('404', {
+        errorMessage: 'OOPS inside about us page not found'
+    })
+})
+
+app.get('*', (req, res) => {
+    res.render('404', {
+        errorMessage: 'OOPS page not found'
+    })
+});
+
 app.listen(7000, () => {
     console.log('loaded');
 });
