@@ -3,20 +3,26 @@ const app = express();
 const path = require('path');
 
 const publicFolderPath = path.join(__dirname, '../public');
+const templateFolderPath = path.join(__dirname, '../templates');
 
+//set view engine as hbs
 app.set("view engine", "hbs");
 
+//change views folder name to another name
+app.set("views", templateFolderPath);
+
+//for static pages
 app.use(express.static(publicFolderPath));
 
 app.get('/', (req, res) => {
     res.render("index", {
-        username:"vaibhav"
+        username: "vaibhav"
     });
 });
 
 app.get('/about', (req, res) => {
     res.render("about", {
-        username:"vaibhav"
+        username: "vaibhav"
     });
 });
 
